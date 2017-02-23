@@ -12,6 +12,7 @@ import myaspectj.annotations.MyDebugTrace;
 import myaspectj.filelogger.LocalLogManager;
 import stam.Person;
 
+import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         Person person = new Person();
         LocalLogManager.initLogger();
         logger.debug("Activity loading....");
+        String rootLoggerName = Logger.ROOT_LOGGER_NAME;
+        Log.d("adiel","rootLoggerName "+rootLoggerName);
+        LocalLogManager.initLogger();
+      //  LocalLogManager.superLog("bla");
+        //ccccc
 
     }
 
@@ -75,11 +81,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void bombLogger(View view) {
 
+        LocalLogManager.superLog("bla");
           //  startService(new Intent(MainActivity.this,BombLoggerIntentService.class));
-        for (int i =0 ; i<10000 ; i++){
-            //LocalLogManager.superLog("msg num "+i);
-            logger.debug(" num:"+i);
-        }
+//        for (int i =0 ; i<10000 ; i++){
+//            //LocalLogManager.superLog("msg num "+i);
+//            logger.debug(" num:"+i);
+//        }
     }
 
     @Ignore
